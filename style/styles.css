@@ -16,6 +16,8 @@ body {
 
   font-family: sans-serif;
 
+  text-align: center;
+  
   background-color: #000;
 }
 
@@ -53,6 +55,8 @@ body {
 .section {
   width: 100vw;
   min-height: 100vh;
+
+  padding: 24px;
 
   clear: both;
   float: left;
