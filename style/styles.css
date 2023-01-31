@@ -1,90 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap");
 * {
   margin: 0;
   padding: 0;
-
-  flex-wrap: wrap;
+  box-sizing: border-box;
 }
-
 body {
-  width: 100vw;
-  height: 100vh;
-
+  width: 100%;
   clear: both;
   float: left;
-
-  color: #fff;
-
-  font-family: sans-serif;
-
-  text-align: center;
-  
+  color: #000;
+  font: 400 16pt "Montserrat", sans-serif;
   background-color: #000;
 }
-
+ul, ol {
+  list-style: none;
+}
+a {
+  color: #c40;
+  text-decoration: none;
+  transition: color .4s;
+}
 #container {
   width: 100%;
-  height: 100%;
-
+  margin: 0 auto;
   clear: both;
-  float: left;
-
-  scroll-snap-type: y mandatory;
+  position: relative;
   overflow-x: hidden;
 }
-
+#header {
+  width: inherit;
+  clear: both;
+  float: left;
+}
+#header nav {
+  width: 100%;
+  padding: 0 calc(((100% - 1600px) / 2) + 96px);
+  clear: both;
+  float: left;
+  position: fixed;
+  z-index: 999;
+  font: 800 14pt "Montserrat", sans-serif;
+  text-transform: uppercase;
+  line-height: 80px;
+  background-color: #000;
+}
+#header nav ul {
+  float: right;
+}
+#header nav label {
+  width: 32px;
+  display: none;
+  position: inherit;
+  top: 0;
+  right: 48px;
+  z-index: 2;
+  cursor: pointer;
+}
+#header nav li {
+  display: inline-block;
+}
+#header nav li a {
+  padding: 0 12px;
+  display: block;
+  color: #eee;
+}
+#header nav li a:hover {
+  color: #c40;
+}
+#main {
+  width: inherit;
+  min-height: 150vh;
+  clear: both;
+  float: left;
+  background-color: #eee;
+}
+#footer {
+  width: inherit;
+  padding: 96px 48px;
+  clear: both;
+  float: left;
+  color: #eee;
+  font: 500 12pt "Montserrat", sans-serif;
+  text-align: center;
+  background-color: #000;
+}
 #toggle {
   display: none;
 }
-
-#header {
-  background-image: url("./../img/img-01.jpg");
+#toggle:checked ~ #header #hamburger::before {
+  transform: rotate(-45deg);
 }
-
-#about {
-  background-image: url("./../img/img-02.jpg");
+#toggle:checked ~ #header #hamburger::after {
+  transform: rotate(45deg);
 }
-
-#contact {
-  background-image: url("./../img/img-03.jpg");
+#logo {
+  width: auto;
+  height: 64px;
+  display: inline-block;
+  vertical-align: middle;
 }
-
-#footer {
-  background-color: #000;
-}
-
-.section {
-  width: 100vw;
-  min-height: 100vh;
-
-  clear: both;
-  float: left;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-
-  scroll-snap-align: start;
-}
-
-.section h1 {
-  font-size: 48px;
-
-  text-transform: uppercase;
-}
-
-.section h1, .section h2, .section h3 {
+#hamburger {
   width: 100%;
-
-  text-align: center;
-  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  height: 3px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
 }
-
-.section h2, .section h3 {
-  font-size: 24px;
+#hamburger::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translateY(-6px);
+  background-color: #fff;
+  transition: .4s;
+}
+#hamburger::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translateY(6px);
+  background-color: #fff;
+  transition: .4s;
+}
+@media only screen and (max-width: 1600px) {
+  #header nav {
+    padding: 0 96px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  #header nav {
+    line-height: 72px;
+    padding: 0 48px;
+  }
+}
+@media only screen and (max-width: 960px) {
+  #header nav {
+    line-height: 64px;
+  }
+  #header nav ul {
+    width: 320px;
+    min-height: 100vh;
+    height: 100%;
+    margin-right: -320px;
+    padding: 24px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    line-height: normal;
+    background-color: #c40;
+    overflow-y: auto;
+    transition: margin-right .4s;
+  }
+  #header nav label {
+    display: block;
+  }
+  #header nav li {
+    padding: 6px;
+    display: block;
+  }
+  #header nav li a:hover {
+    color: #eee;
+  }
+  #main {
+    transition: opacity .4s;
+  }
+  #footer {
+    transition: opacity .4s;
+  }
+  #toggle:checked ~ #header nav ul {
+    margin-right: 0;
+  }
+  #toggle:checked ~ #main {
+    opacity: 0.5;
+  }
+  #toggle:checked ~ #footer {
+    opacity: 0.5;
+  }
+  #logo {
+    height: 48px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  #header nav {
+    padding: 0 24px;
+    left: 0;
+    line-height: 56px;
+    transition: left .4s;
+  }
+  #header nav label {
+    right: 24px;
+  }
+  #main {
+    transition: opacity .4s, margin-left .4s;
+  }
+  #footer {
+    transition: opacity .4s, margin-left .4s;
+  }
+  #toggle:checked ~ #header nav {
+    left: -320px;
+  }
+  #toggle:checked ~ #main {
+    margin-left: -320px;
+  }
+  #toggle:checked ~ #footer {
+    margin-left: -320px;
+  }
+  #logo {
+    height: 32px;
+  }
 }
